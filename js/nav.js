@@ -1,4 +1,4 @@
-window.onload = function() {
+    document.addEventListener('DOMContentLoaded', function() {
     fetch('/js/nav.html')
         .then(response => {
             if (!response.ok) {
@@ -15,4 +15,4 @@ window.onload = function() {
     if(window.location.pathname.includes("gameframe.html")){
         loadFrameGamesPage();
     }
-};
+});

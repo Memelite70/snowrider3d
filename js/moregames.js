@@ -1,7 +1,7 @@
 
 async function FetchHtml() {
-     var p = "/moregames.html";
-    let response = await fetch('/embed/moregames.html');
+     var p = window.location.pathname;
+    let response = await fetch('/embed' + p);
     return await response.text(); 
 }
 
@@ -9,7 +9,7 @@ async function Do() {
     let html = await FetchHtml();
     console.log(html);
     localStorage.setItem('moregames', html);
-    const DivToHaveGamesInserted = document.getElementById("moregames_left");
+    const DivToHaveGamesInserted = document.getElementById("games");
     DivToHaveGamesInserted.innerHTML = localStorage.getItem('moregames');
 }
 

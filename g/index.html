@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>snow-rider.online</title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  <script defer src="/js/nav.js"></script>
+  <script src="/js/games.js"></script>
+  <script src="/js/moregames.js"></script>
+  <script>
+    function paramGet(name) {
+        name = name.replace(/[[]/, '\$$[').replace(/[]$$]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const iframe = document.getElementById('gameframe_frame_container');
+      const storedSrc = paramGet('game');
+      const gmsTitle = document.querySelectorAll('#gmsName');
+      gmsTitle.forEach(gmsTitle => {
+        gmsTitle.innerHTML = localStorage.getItem('Title');
+      });
+      if(storedSrc === "/gms/snow-rider-3d/"){
+        window.location.href="/"
+      }
+      iframe.src = '/loader.html?game=' + storedSrc;
+      });
+
+    function fullscreen(){
+      const frame = document.getElementById('gameframe_frame_container');
+      frame.requestFullscreen();
+      frame.contentWindow.focus();
+    }
+    function cloak() {
+      const mainGameFrame = document.getElementById('gameframe_frame_container');
+      const gameUrl = mainGameFrame.src;
+      mainGameFrame.src = `paused.html?game=${gameUrl}`;
+      const left = (screen.width - 1366) / 2;
+      const top = (screen.height - 768) / 4;
+      const win = window.open('', '_blank', `width=1366,height=768,top=${top},left=${left}`);
+      if (window.focus) {
+        win.focus();
+      }
+      win.document.body.style.margin = '0';
+      win.document.body.style.height = '100vh';
+      win.document.title = window.location.hostname;
+      const iframe = win.document.createElement('iframe');
+      iframe.style.border = 'none';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.margin = '0';
+      iframe.src = gameUrl;
+      win.document.body.appendChild(iframe);
+      win.addEventListener('close', () => {
+        mainGameFrame.src = iframe.src;
+      });
+    }
+  </script>
+</head>
+
+<body><div id="topnav" class="topnav"><div class="grey"></div></div>
+  <div class="main"><div class="frame" id="frame">
+  <iframe src="" id="gameframe_frame_container" class="game_frame"></iframe>
+    <div class="gameUIbar">
+      <span style="float: right;" class="gamesicon" onclick="fullscreen();"><img class="gameUIbutton" src="/ui/fullscreen.svg"></span>
+    <span style="float: right;" class="gamesicon" onclick="cloak();"><img class="gameUIbutton" src="/ui/cloak.svg"></span>
+    </div>
+</div>
+    <div id="games" class="moregames_left">
+      <center>
+        <h1>&middot; More Games &middot;</h1>
+        <br>
+
+      </center>
+    </div>
+    <div class="game_desc">
+      <span><h4><span id="gmsName">snow-rider.online</span></h4></span>
+      <h1>
+
+        <span id="gmsName">This Game</span> is yet another exciting addition to the collection on snow-rider.online. Immerse yourself in the heart-pounding thrill of <span id="gmsName">This Game</span> by playing it directly on snow-rider.online. Whether you're seeking an adrenaline rush or just looking to pass the time, <span id="gmsName">This Game</span> offers a truly unique experience that combines fast-paced action, challenging gameplay, and stunning visuals.
+
+        Each level is designed to test your skills and reflexes, keeping you engaged and entertained for hours on end. With intuitive controls, immersive sound effects, and dynamic challenges, <span id="gmsName">This Game</span> guarantees a memorable gaming adventure. It’s the perfect game to cure your boredom and immerse yourself in a world of excitement. Whether you're a casual gamer or a seasoned pro, this game will keep you coming back for more.
+
+        Join the community of players on snow-rider.online and discover why <span id="gmsName">This Game</span> is quickly becoming a fan favorite. Get ready to conquer the challenges and experience a fun-filled journey like no other!
+      </h1>
+    </div>
+  </div>
+</body>
+
+</html>
