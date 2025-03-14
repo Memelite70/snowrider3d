@@ -1,0 +1,3 @@
+html, body, canvas, #gameContainer, .webgl-content, #canvas, #container, #phaser-canvas {
+    cursor: url("/ui/cursor.cur"), default;
+}

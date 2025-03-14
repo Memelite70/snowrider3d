@@ -39,6 +39,6 @@ var script = document.createElement('script');
 
 var link = document.createElement('link');
 link.rel = "stylesheet";
-link.href = "/assets/styles/css/game-insert.css";
+link.href = "/ui/insert.css";
 var body = document.querySelector("head");
 body.appendChild(link);
