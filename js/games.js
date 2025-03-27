@@ -45,9 +45,9 @@ window.addEventListener('resize', () => {
 
 });
 function loadgame(gameURL, unusedVar) {
-  
+
   const parentElement = event.target.closest('div');
-  
+  const scroll = document.getElementById("scroll");
   const h1Element = parentElement.querySelector('h1');
   const gameName = h1Element.innerText;
   const element = document.getElementById("gameframe_frame_container");
@@ -63,11 +63,12 @@ function loadgame(gameURL, unusedVar) {
     gmsTitle.forEach(gmsTitle => {
       gmsTitle.innerHTML = localStorage.getItem('Title');
     });
+      document.title = localStorage.getItem('Title') + ' Unblocked · snow-rider.online';
     gmsTitle.innerHTML = localStorage.getItem('Title');
     element.src = '/loader.html?game=' + gameURL;
     window.localStorage.setItem('gameURL', element.src);
     element.contentWindow.focus();
-    element.scrollIntoView({ 
+    scroll.scrollIntoView({ 
       behavior: "smooth" 
     }); 
 

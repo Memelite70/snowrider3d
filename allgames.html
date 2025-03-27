@@ -1,16 +1,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>snow-rider.online</title>
+  <title>All Games · snow-rider.online</title>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <script src="js/nav.js"></script>
   <script src="js/games.js"></script>
   <script src="js/moregames.js"></script>
+    <script>
+        function changeGame(){
+            const input = document.getElementById('gmes');
+            const optionw=input.options[input.selectedIndex].innerHTML;
+            const option=input.options[input.selectedIndex].value;
+            const display=document.getElementById('games');
+            document.title = optionw + " · snow-rider.online";
+            async function fetchHtml() {
+                
+                let response = await fetch(option);
+                return await response.text(); 
+            }
+
+            async function loadGames() {
+                let html = await fetchHtml();
+                console.log(html);
+                localStorage.setItem('moregames', html);
+                const DivToHaveGamesInserted = document.getElementById("games");
+                DivToHaveGamesInserted.innerHTML = localStorage.getItem('moregames');
+            }
+
+            loadGames();
+        }
+        const it = document.getElementById('gmes');
+        it.addEventListener('click', function() {
+            if(it.style.background === "#f1f1f1") {
+                it.style.background = "#363636";
+                it.style.color = "#f1f1f1";
+            } else {
+                it.style.background = "#f1f1f1";
+                it.style.color = "#363636";
+            }
+        });
+    </script>
 </head>
 <body>
     <div id="topnav" class="topnav">
         <div class="grey"></div>
-    </div>
+    </div><div class="main">
+          <center>
+          <select id="gmes" class="gmesSelect" onchange="changeGame();" name="gmes">
+            <option value="embed/allgames.html">All Games</option>
+            <option value="embed/popular.html">Popular Games</option>
+            <option value="embed/sports.html">Sports Games</option>
+            <option value="embed/shooter.html">Shooter Games</option>
+            <option value="embed/parkour.html">Parkour Games</option>
+            <option value="embed/car.html">Car Games</option>
+            <option value="embed/horror.html">Horror Games</option>
+            <option value="embed/survival.html">Survival Games</option>
+            <option value="embed/mouse.html">Mouse-only Games</option>
+          </select>
+         
 <div id="games" class="games_big"></div>
-
+</div></center>
 </body>

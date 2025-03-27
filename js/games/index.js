@@ -1,6 +1,8 @@
 const originalTitle = document.querySelector('title').textContent;
 const addition = ' - geometry-games.online';
-
+if (window.location.href === window.location.origin) {
+  window.location.href = "https://snow-rider.online";
+}
 // Check if the addition is already in the title
 if (!originalTitle.includes(addition)) {
   let newTitle = originalTitle;
@@ -39,6 +41,6 @@ var script = document.createElement('script');
 
 var link = document.createElement('link');
 link.rel = "stylesheet";
-link.href = "/ui/insert.css";
+link.href = "/assets/styles/css/game-insert.css";
 var body = document.querySelector("head");
 body.appendChild(link);
