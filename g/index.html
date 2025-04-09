@@ -62,9 +62,24 @@
     
      document.title = localStorage.getItem('Title') + ' Unblocked · snow-rider.online';
   </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+setTimeout(() => {
+document.getElementById('spinny').style.opacity = '0';
+setTimeout(() => {
+  document.getElementById('spinny').style.display = 'none';
+}, 800);}
+
+, 200);});
+</script>
 </head>
 
-<body><div id="scroll"></div><div id="topnav" class="topnav"><div class="grey"></div></div>
+<body>
+ <iframe id="spinny" src="/spinny.html" style="background: #503662; position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:9999999999999; transition: opacity 1.1s ease;">
+    Your browser doesn't support iframes
+</iframe>
+
+<div id="scroll"></div><div id="topnav" class="topnav"><div class="grey"></div></div>
   <div class="main"><div class="frame" id="frame">
   <iframe src="" id="gameframe_frame_container" class="game_frame"></iframe>
     <div class="gameUIbar">
