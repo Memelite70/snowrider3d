@@ -1,5 +1,5 @@
 const originalTitle = document.querySelector('title').textContent;
-const addition = ' - geometry-games.online';
+const addition = ' - snow-rider.online';
 if (window.location.href === window.location.origin) {
   window.location.href = "https://snow-rider.online";
 }
@@ -25,7 +25,7 @@ gtagLoad();
 }
 function gtagLoad(){
 var script = document.createElement('script');
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JKFFWENNV0'; 
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-9XL9TXRPN2'; 
         script.async = true;
 
          document.head.appendChild(script);
@@ -36,11 +36,11 @@ var script = document.createElement('script');
         gtag('js', new Date());
 
   
-        gtag('config', 'G-JKFFWENNV0');
+        gtag('config', 'G-9XL9TXRPN2');
         console.log('Google Analytics Loaded');}
 
 var link = document.createElement('link');
 link.rel = "stylesheet";
-link.href = "/assets/styles/css/game-insert.css";
+link.href = "/css/game-insert.css";
 var body = document.querySelector("head");
 body.appendChild(link);
